@@ -82,27 +82,6 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users."celestly" = {
-    isNormalUser = true;
-    description = "Celestly";
-    extraGroups = [ "networkmanager" "wheel" ];
-
-  # Packages Global
-    packages = with pkgs; [
-      #KDE APPS
-      kdePackages.spectacle
-
-      # APPS
-      vlc
-      steam
-      github-desktop
-
-      # Utilities
-      fastfetch
-    ];
-  };
-
   # Enable Bluetooth
   hardware.alsa.enableBluetooth = true;
   hardware.bluetooth.enable = true;
@@ -118,39 +97,6 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile.
-  # You can use https://search.nixos.org/ to find more packages (and options).
-  environment.systemPackages = with pkgs; [
-    # Utilities
-    neovim
-    wget
-    git
-    ghostty
-    gh
-    gnumake
-    unzip
-    ripgrep
-    fd
-    tree-sitter
-    wl-clipboard
-    tmux
-    impression
-
-    # Programing Languages
-    cargo
-    go
-    luarocks
-    ruby
-    php
-    nodejs_26
-    julia
-    python314
-
-    # Compilers
-    gcc
-
-  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -196,4 +142,57 @@
   system.stateVersion = "26.05"; # Did you read the comment?
 
 
+
+
+  # List packages installed in system profile.
+  # You can use https://search.nixos.org/ to find more packages (and options).
+  environment.systemPackages = with pkgs; [
+    # Utilities
+    neovim
+    wget
+    git
+    ghostty
+    gh
+    gnumake
+    unzip
+    ripgrep
+    fd
+    tree-sitter
+    wl-clipboard
+    tmux
+    impression
+  
+    # Programing Languages
+    cargo
+    go
+    luarocks
+    ruby
+    php
+    nodejs_26
+    julia
+    python314
+  
+    # Compilers
+    gcc
+  ];
+
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users."celestly" = {
+    isNormalUser = true;
+    description = "Celestly";
+    extraGroups = [ "networkmanager" "wheel" ];
+    
+    # Packages Global
+    packages = with pkgs; [
+      #KDE APPS
+      kdePackages.spectacle
+      
+      # APPS
+      vlc
+      steam
+      
+      # Utilities
+      fastfetch
+    ];
+  };
 }
