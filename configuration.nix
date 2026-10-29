@@ -195,4 +195,11 @@
       fastfetch
     ];
   };
+
+  # SSDM Theme
+  programs.silentSDDM = {
+    enable = true;
+    theme = "default";
+  };
+
 }
